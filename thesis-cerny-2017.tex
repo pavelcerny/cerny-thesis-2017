@@ -280,14 +280,35 @@ unicode=true,
 	% \include{2_teorie}
 	% atd...
 	%*****************************************************************************
-	%\include{intro+analysis.tex}
+	\include{intro+analysis}
 	
 	
-	\section{Proposed Methods}
+	\chapter{Proposed Methods}
 	This section describes all methods I found out. The description talks allways about the latest iteration of the prototype.
-		\subsection{Without GPS}
-		\subsection{GPS}
-			\subsubsection{Reverse geocoding}
+		\section{Overview}
+			The iterative design process lead me to propose and validate 7 different methods. These methods are split into categories without GPS and without. The first group, without GPS promises working even on old phones as Nokias with Symbian S60, which are still used by some blind. The second group with GPS uses the advatages of modern phones as iPhones and even recent cheap Androids, with the basic smart sensors.
+			\paragraph{Without GPS}
+				\begin{description}
+					\item [POI]
+					The systems asks questions about the current address or current start stop name to decide the users exact position.
+					\item [Go to corner of two streets]
+					The system asks user to go to a crossing of two streets and asks pedestrians walking arround to get the name of the streets. 
+				\end{description}
+			\paragraph{With GPS}
+				\begin{description}
+									
+					\item [POI with hints]
+					Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
+					\item [Go arround corner with compass]
+					Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
+					\item [Go arround corner with compass]
+					Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
+					\item [Reverse geocoding]
+					Uses GPS position to get coordinates, gets current address from them and then launch navigation between the current address and the target address.
+				\end{description}
+		\section{Without GPS}
+		\section{GPS}
+			\subsection{Reverse geocoding}
 		
 			\begin{figure}[!htb]
 				\minipage{0.32\textwidth}
@@ -309,35 +330,35 @@ unicode=true,
 			The user is typing the desired target address on default system keyboard or in Chrome browser, he can use the advantage of button \uv{Dictate} and speak it aloud.
 			When the user is done with input, the system shows current estimated accuracy of the system.
 			Then user can click on \uv{Navigate to Vodičkova 13}. The value of this button changes according to the inputed target address.
-			Once the user click navigate he is redirected to system
+			Once the user click navigate, the systems validate the target address and the user location are both in area covered by Naviterier and if so the system shows the user the navigation. Which then navigate the user to the target. See section \ref{sec:navifation} for more details.
 			
-			
-			The estimated accuracy is changed only when the sensor tells a value which is $\geq 5m$. This prevents the screen reader from infinite reeding loop, when it would be changing between i.e. $10m$ and $11m$. 
-		\subsection{Navigation}
+			Note: The estimated accuracy is changed only when the sensor tells a value which is $\geq 5m$. This prevents the screen reader from infinite reeding loop, when it would be changing between i.e. $10m$ and $11m$. 
+		\section{Navigation}
+		\label{sec:navifation}
 		This describe the navigation itself. It means this decribe the window which is opened when the system estimates the exact user address.
-	\section{Development}
-	\section{Software Implementation}
-	\section{Testing}
-		\subsection{GPS}
-			\subsubsection{Reverse Geocoding}
+	\chapter{Development}
+	\chapter{Software Implementation}
+	\chapter{Testing}
+		\section{GPS}
+			\subsection{Reverse Geocoding}
 			Google gecoding doesn't allways return address
 		
-		\subsection{Testing sessions}
-			\subsubsection{1st testing}
-			\subsubsection{2nd testing}
-			\subsubsection{3rd testing}
-			\subsubsection{4th testing}
-			\subsubsection{5th testing}
+		\section{Testing sessions}
+			\subsection{1st testing}
+			\subsection{2nd testing}
+			\subsection{3rd testing}
+			\subsection{4th testing}
+			\subsection{5th testing}
 		\section{Research sessions}
-			\subsubsection{what they recognize on streets}
-			\subsubsection{names of streets}
-			\subsubsection{how they get lost}
-			\subsubsection{how they write}
+			\subsection{what they recognize on streets}
+			\subsection{names of streets}
+			\subsection{how they get lost}
+			\subsection{how they write}
 	
-	\section{Results}
-		\subsection{Without GPS}
-		\subsection{GPS}
-			\subsubsection{Reverse geocoding}
+	\chapter{Results}
+		\section{Without GPS}
+		\section{With GPS}
+			\subsection{Reverse geocoding}
 			I don't recomend this method for future usage. This method estimate the correct sidewalk with 50\% success. It can tell the correct sidewalk, but it can falsely estimate the user position as the sidewalk on the opposite side of the street.  And thats huge difference. 
 			Because after deciding the correct sidewalk/address, the phone downloads the way itinereary and turn off gps. It's a huge difference if the itinerary says, \uv{stand with your backs to wall and go left} or if it says \uv{...and go right} while giving the orders for the sidewalk accross the street. Therefore the whole navigation is then random and can't be used at all.
 			
@@ -346,10 +367,10 @@ unicode=true,
 			This method can't be used as a production method for start of the navigation system.
 			This method can be used only as quick comparsion for experiments (with fixed reverse GC API).
 			
-		\subsection{Reverse geolocation API}
+		\section{Reverse geolocation API}
 		\label{subsec:reverse-gc-api}
 		Don't use the Google API or HERE API. Because Naviterier requires Street name and house number as na input i.e. \uv{Vodičkova 13}. But both of them sometimes, instead of the address  returns just the street name i.e. \uv{Vodičkova}, or just the area name ie \uv{Nové Město, Praha}. Therefore you need an API which allways returns Street and housenumber. CEDA API seems promising. Still better method would be an API which for GPS coordinates returns the sidewalk Id and don't rely, that the nearest address entery point is on the same sidewalk.	
-		\subsection{Naviterier}
+		\section{Naviterier}
 			The navigation is very precise and appreciatet by the blinds. However they don't know it's just pre-downloaded set of orders. That it does not update base on the real location.
 			
 			I definitely recomend either make sure the user knows the navigation started to work offline or add the updating based on realtime GPS signal. In the tested systems when the system used GPS to locate the initial position, and then turned off the signal without noticing the user, it made the users make huge mistakes, guiding them the wrong path, while still tehy were sure, they are walking the right way and the system as well knows tehir exact location.
