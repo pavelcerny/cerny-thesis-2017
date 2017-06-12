@@ -308,6 +308,24 @@ unicode=true,
 				\end{description}
 		\section{Without GPS}
 		\section{GPS}
+			\subsection{Go arround corner with compass}
+				\begin{figure}[!htb]
+					\minipage{0.32\textwidth}
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/01}
+					\caption{A really Awesome Image}\label{fig:awesome_image1}
+					\endminipage\hfill
+					\minipage{0.32\textwidth}
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/02}
+					\caption{A really Awesome Image}\label{fig:awesome_image2}
+					\endminipage\hfill
+					\minipage{0.32\textwidth}%
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/03}
+					\caption{A really Awesome Image}\label{fig:awesome_image3}
+					\endminipage
+				\end{figure}
+			
+				This prototype uses the compass to send the user the correct way, then it collects GPS coordinates on the way
+				This is a high fidelity prototype.
 			\subsection{Reverse geocoding}
 		
 			\begin{figure}[!htb]
@@ -358,6 +376,11 @@ unicode=true,
 	\chapter{Results}
 		\section{Without GPS}
 		\section{With GPS}
+			\subsection{Go arround corner with compass}
+			I see future in this approach, guide the person using the compass, and when sure, where he is, switch to precise Naviterier navigation.
+			The ease of use is big.
+			The UI should be improved by saying which direction he should start just one time. It current version the command is allways changing. So when the user turns himself in desired position, he turns the phone as well, and the phone then can tell different direction than before. Which leads to confused spinning on a place. One possible fix can be \uv{your target is on 3 o'clock, start walking along the buildings, that direction}
+			The algorithm, should be improved in two ways. By asking the user on which hand he has the houses. 
 			\subsection{Reverse geocoding}
 			I don't recomend this method for future usage. This method estimate the correct sidewalk with 50\% success. It can tell the correct sidewalk, but it can falsely estimate the user position as the sidewalk on the opposite side of the street.  And thats huge difference. 
 			Because after deciding the correct sidewalk/address, the phone downloads the way itinereary and turn off gps. It's a huge difference if the itinerary says, \uv{stand with your backs to wall and go left} or if it says \uv{...and go right} while giving the orders for the sidewalk accross the street. Therefore the whole navigation is then random and can't be used at all.
