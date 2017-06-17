@@ -301,7 +301,7 @@ unicode=true,
 					Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
 					\item [Go arround corner with compass]
 					Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
-					\item [Go arround corner with compass]
+					\item [Go arround corner without compass]
 					Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
 					\item [Reverse geocoding]
 					Uses GPS position to get coordinates, gets current address from them and then launch navigation between the current address and the target address.
@@ -360,13 +360,20 @@ unicode=true,
 		\section{GPS}
 			\subsection{Reverse Geocoding}
 			Google gecoding doesn't allways return address
+		\section{POI}
+				
 		
 		\section{Testing sessions}
 			\subsection{1st testing}
+				\label{sec:1th-testing}
 			\subsection{2nd testing}
+				\label{sec:2th-testing}
 			\subsection{3rd testing}
+				\label{sec:3th-testing}
 			\subsection{4th testing}
+				\label{sec:4th-testing}
 			\subsection{5th testing}
+				\label{sec:5th-testing}
 		\section{Research sessions}
 			\subsection{what they recognize on streets}
 			\subsection{names of streets}
@@ -399,11 +406,26 @@ unicode=true,
 			I definitely recomend either make sure the user knows the navigation started to work offline or add the updating based on realtime GPS signal. In the tested systems when the system used GPS to locate the initial position, and then turned off the signal without noticing the user, it made the users make huge mistakes, guiding them the wrong path, while still tehy were sure, they are walking the right way and the system as well knows tehir exact location.
 		
 	
+	\chapter{Appendix}
+		\section{POI bugs}
+			The testing described in section \ref{sec:5th-testing} discovered the positions of some tram-stops are wrong. The difference can be up to $40m$. On the picture \ref{fig:myslikova-spatne-tram} the participant crossed the street within the pedestrian crossing and ended up in street \emph{Černá} instead of \emph{Myslíkova}. While thinking he is still correct.
+			
+			The positions of tram-stops has to be verified and fixed.
+			\begin{figure}[!htb]
+				\minipage{0.49\textwidth}
+				\includegraphics[width=\linewidth]{"../../../../Dropbox/dp/chyby/mhd/lazarska-spatne-tram"}
+				\caption{Badly placed Lazarská stop. In circle is the position in MHD database, the cross is the real position of the stop}\label{fig:awesome_image1}
+				\endminipage\hfill
+				\minipage{0.49\textwidth}
+				\includegraphics[width=\linewidth]{"../../../../Dropbox/dp/chyby/mhd/myslikova-spatne-tram"}
+				\caption{Badly placed Myslíkova stop. Same marking as previous image.}\label{fig:myslikova-spatne-tram}
+				\endminipage\hfill
+			\end{figure}
+		
+		
 	
 	
-	
-	
-	
+
 	
 	
 	
