@@ -20,6 +20,10 @@
 % pripadne pisete-li cesky, pak lze zkusit take:
 % \usepackage[OT1]{fontenc} 
 \usepackage[utf8]{inputenc}
+
+
+
+
 %=-=-=-=-=-=-=-=-=-=-=-=--=%
 % In case of problems with PDF fonts, one may try to uncomment this line:
 %\usepackage{lmodern}
@@ -40,6 +44,15 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{url}
 \usepackage{gensymb}
+
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -290,22 +303,31 @@ unicode=true,
 			\paragraph{Without GPS}
 				\begin{description}
 					\item [POI]
-					The systems asks questions about the current address or current start stop name to decide the users exact position.
+						The systems asks questions about the current address or current start stop name to decide the users exact position.
 					\item [Go to corner of two streets]
-					The system asks user to go to a crossing of two streets and asks pedestrians walking arround to get the name of the streets. 
+						The system asks user to go to a crossing of two streets and asks pedestrians walking arround to get the name of the streets. 
 				\end{description}
 			\paragraph{With GPS}
 				\begin{description}
-									
+					\item [Describe surroundings]
+						User describes, what's arround him i.e. \uv{road on the left, grass area on left} and the system looks on the map in user's area and asks follow up questions until, the descriptions match exactly one position on exactly one sidewalk.								
 					\item [POI with hints]
-					Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
+						Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
 					\item [Go arround corner with compass]
-					Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
+						Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
 					\item [Go arround corner without compass]
-					Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
+						Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
 					\item [Reverse geocoding]
-					Uses GPS position to get coordinates, gets current address from them and then launch navigation between the current address and the target address.
+						Uses GPS position to get coordinates, gets current address from them and then launch navigation between the current address and the target address.
 				\end{description}
+			
+				
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{../../../../Dropbox/dp/overview/prototypes_testings}
+					\caption{Overview of which prototype survived to which testing}
+					\label{fig:prototypestestings}
+				\end{figure}
 		\section{Without GPS}
 		\section{GPS}
 			\subsection{Go arround corner with compass}
