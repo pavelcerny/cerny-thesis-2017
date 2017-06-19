@@ -300,6 +300,15 @@ unicode=true,
 	This section describes all methods I found out. The description talks allways about the latest iteration of the prototype.
 		\section{Overview}
 			The iterative design process lead me to propose and validate 7 different methods. These methods are split into categories without GPS and without. The first group, without GPS promises working even on old phones as Nokias with Symbian S60, which are still used by some blind. The second group with GPS uses the advatages of modern phones as iPhones and even recent cheap Androids, with the basic smart sensors.
+			
+			\begin{figure}[ht]
+				\centering
+				\includegraphics[width=0.8\linewidth]{../../../../Dropbox/dp/overview/prototypes_testings}
+				\caption{Overview of which prototype survived to which testing}
+				\label{fig:prototypestestings}
+			\end{figure}
+			
+		\section{List of all prototypes}
 			\paragraph{Without GPS}
 				\begin{description}
 					\item [POI]
@@ -313,7 +322,7 @@ unicode=true,
 						User describes, what's arround him i.e. \uv{road on the left, grass area on left} and the system looks on the map in user's area and asks follow up questions until, the descriptions match exactly one position on exactly one sidewalk.								
 					\item [POI with hints]
 						Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
-					\item [Go arround corner with compass]
+					\item [Go arround corner]
 						Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
 					\item [Go arround corner without compass]
 						Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
@@ -322,12 +331,7 @@ unicode=true,
 				\end{description}
 			
 				
-				\begin{figure}
-					\centering
-					\includegraphics[width=1\linewidth]{../../../../Dropbox/dp/overview/prototypes_testings}
-					\caption{Overview of which prototype survived to which testing}
-					\label{fig:prototypestestings}
-				\end{figure}
+				
 		\section{Without GPS}
 		\section{GPS}
 			\subsection{Go arround corner with compass}
@@ -377,13 +381,41 @@ unicode=true,
 		\label{sec:navifation}
 		This describe the navigation itself. It means this decribe the window which is opened when the system estimates the exact user address.
 	\chapter{Development}
+		\section{POI}		
+		\section{Go to a corner of two streets}		
+		\section{Describe the surroundings}
+			\subsection{1st iteration}		
+			\subsection{2nd iteration}		
+			\subsection{3rd iteration}		
+			\subsection{Canceled}		
+		\section{POI with the hints}
+		\section{Go around a corner}
+		\section{Go around a corner without the compass}
+		\section{Reverse Geocoding}
+		
+		
+				
 	\chapter{Software Implementation}
 	\chapter{Testing}
-		\section{GPS}
-			\subsection{Reverse Geocoding}
+		\section{POI}		
+		\section{Go to a corner of two streets}		
+		\section{Describe the surroundings}
+			\subsection{1st iteration}
+				\begin{itemize}
+					\item at home over map
+					\item 
+				\end{itemize}
+			\subsection{2nd iteration}			
+			\subsection{3rd iteration}	
+		\subsection{Canceled}		
+		\section{POI with the hints}
+		\section{Go around a corner}
+		\section{Go around a corner without the compass}				
+		\subsection{Reverse Geocoding}
 			Google gecoding doesn't allways return address
-		\section{POI}
-				
+		
+		
+						
 		
 		\section{Testing sessions}
 			\subsection{1st testing}
@@ -403,25 +435,41 @@ unicode=true,
 			\subsection{how they write}
 	
 	\chapter{Results}
-		\section{Without GPS}
-		\section{With GPS}
-			\subsection{Go arround corner with compass}
+		\section{Prototypes without GPS}
+			\section{POI}		
+			\section{Go to a corner of two streets}		
+			\section{Describe the surroundings}
+			\subsection{1st iteration}
+			\begin{itemize}
+				\item at home over map
+				\item 
+			\end{itemize}
+			\subsection{2nd iteration}			
+			\subsection{3rd iteration}	
+			\subsection{Canceled}		
+			\section{POI with the hints}
+			
+			
+		\section{Prototypes with GPS}
+			\subsection{Go around a corner}
 			I see future in this approach, guide the person using the compass, and when sure, where he is, switch to precise Naviterier navigation.
 			The ease of use is big.
 			The UI should be improved by saying which direction he should start just one time. It current version the command is allways changing. So when the user turns himself in desired position, he turns the phone as well, and the phone then can tell different direction than before. Which leads to confused spinning on a place. One possible fix can be \uv{your target is on 3 o'clock, start walking along the buildings, that direction}
-			The algorithm, should be improved in two ways. By asking the user on which hand he has the houses. 
+			The algorithm, should be improved in two ways. By asking the user on which hand he has the houses.
+			\section{Go around a corner without a compass}
+				
 			\subsection{Reverse geocoding}
-			I don't recomend this method for future usage. This method estimate the correct sidewalk with 50\% success. It can tell the correct sidewalk, but it can falsely estimate the user position as the sidewalk on the opposite side of the street.  And thats huge difference. 
-			Because after deciding the correct sidewalk/address, the phone downloads the way itinereary and turn off gps. It's a huge difference if the itinerary says, \uv{stand with your backs to wall and go left} or if it says \uv{...and go right} while giving the orders for the sidewalk accross the street. Therefore the whole navigation is then random and can't be used at all.
-			
-			The used reverse GC API was not working 100\%. The API has to be replaced. See section \ref{subsec:reverse-gc-api} for more details.
-						
-			This method can't be used as a production method for start of the navigation system.
-			This method can be used only as quick comparsion for experiments (with fixed reverse GC API).
+				I don't recomend this method for future usage. This method estimate the correct sidewalk with 50\% success. It can tell the correct sidewalk, but it can falsely estimate the user position as the sidewalk on the opposite side of the street.  And thats huge difference. 
+				Because after deciding the correct sidewalk/address, the phone downloads the way itinereary and turn off gps. It's a huge difference if the itinerary says, \uv{stand with your backs to wall and go left} or if it says \uv{...and go right} while giving the orders for the sidewalk accross the street. Therefore the whole navigation is then random and can't be used at all.
+				
+				The used reverse GC API was not working 100\%. The API has to be replaced. See section \ref{subsec:reverse-gc-api} for more details.
+							
+				This method can't be used as a production method for start of the navigation system.
+				This method can be used only as quick comparsion for experiments (with fixed reverse GC API).
 			
 		\section{Reverse geolocation API}
-		\label{subsec:reverse-gc-api}
-		Don't use the Google API or HERE API. Because Naviterier requires Street name and house number as na input i.e. \uv{Vodičkova 13}. But both of them sometimes, instead of the address  returns just the street name i.e. \uv{Vodičkova}, or just the area name ie \uv{Nové Město, Praha}. Therefore you need an API which allways returns Street and housenumber. CEDA API seems promising. Still better method would be an API which for GPS coordinates returns the sidewalk Id and don't rely, that the nearest address entery point is on the same sidewalk.	
+			\label{subsec:reverse-gc-api}
+			Don't use the Google API or HERE API. Because Naviterier requires Street name and house number as na input i.e. \uv{Vodičkova 13}. But both of them sometimes, instead of the address  returns just the street name i.e. \uv{Vodičkova}, or just the area name ie \uv{Nové Město, Praha}. Therefore you need an API which allways returns Street and housenumber. CEDA API seems promising. Still better method would be an API which for GPS coordinates returns the sidewalk Id and don't rely, that the nearest address entery point is on the same sidewalk.	
 		\section{Naviterier}
 			The navigation is very precise and appreciatet by the blinds. However they don't know it's just pre-downloaded set of orders. That it does not update base on the real location.
 			
