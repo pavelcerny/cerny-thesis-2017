@@ -396,6 +396,25 @@ unicode=true,
 		
 				
 	\chapter{Software Implementation}
+		For the last 5th experiment I implemented the prototypes in  Django framework \cite{django}.
+		\section{Common}
+			In this section I describe the implementation part common to all 3 Hi-Fi implemented prototypes.
+		
+		
+		\subsection{POI}
+			TODO		
+		\subsection{Go around a corner}
+			TODO
+		\subsection{Reverse Geocoding}
+			TODO
+			
+		\subsection{Other prototypes}
+			No implementation parts.
+			\emph{Go to a corner of two streets}, 
+			\emph{Describe the surroundings},
+			\emph{POI with the hints},
+			\emph{Go around a corner without the compass}
+			 were realized only as a wizzard of ozz. With no real coding. I only drawn a flow diagram in Axure and enriched it with prerecorded audio mp3s from Accapela Text to speach service.
 	\chapter{Testing}
 		\section{POI}		
 		\section{Go to a corner of two streets}		
@@ -436,27 +455,19 @@ unicode=true,
 	
 	\chapter{Results}
 		\section{Prototypes without GPS}
-			\section{POI}		
-			\section{Go to a corner of two streets}		
-			\section{Describe the surroundings}
-			\subsection{1st iteration}
-			\begin{itemize}
-				\item at home over map
-				\item 
-			\end{itemize}
-			\subsection{2nd iteration}			
-			\subsection{3rd iteration}	
-			\subsection{Canceled}		
-			\section{POI with the hints}
-			
+			\subsection{POI}		
+			\subsection{Go to a corner of two streets}					
 			
 		\section{Prototypes with GPS}
+			\subsection{Describe the surroundings}
+		
+			\subsection{POI with the hints}
 			\subsection{Go around a corner}
 			I see future in this approach, guide the person using the compass, and when sure, where he is, switch to precise Naviterier navigation.
 			The ease of use is big.
 			The UI should be improved by saying which direction he should start just one time. It current version the command is allways changing. So when the user turns himself in desired position, he turns the phone as well, and the phone then can tell different direction than before. Which leads to confused spinning on a place. One possible fix can be \uv{your target is on 3 o'clock, start walking along the buildings, that direction}
 			The algorithm, should be improved in two ways. By asking the user on which hand he has the houses.
-			\section{Go around a corner without a compass}
+			\subsection{Go around a corner without a compass}
 				
 			\subsection{Reverse geocoding}
 				I don't recomend this method for future usage. This method estimate the correct sidewalk with 50\% success. It can tell the correct sidewalk, but it can falsely estimate the user position as the sidewalk on the opposite side of the street.  And thats huge difference. 
@@ -466,15 +477,16 @@ unicode=true,
 							
 				This method can't be used as a production method for start of the navigation system.
 				This method can be used only as quick comparsion for experiments (with fixed reverse GC API).
-			
-		\section{Reverse geolocation API}
-			\label{subsec:reverse-gc-api}
-			Don't use the Google API or HERE API. Because Naviterier requires Street name and house number as na input i.e. \uv{Vodičkova 13}. But both of them sometimes, instead of the address  returns just the street name i.e. \uv{Vodičkova}, or just the area name ie \uv{Nové Město, Praha}. Therefore you need an API which allways returns Street and housenumber. CEDA API seems promising. Still better method would be an API which for GPS coordinates returns the sidewalk Id and don't rely, that the nearest address entery point is on the same sidewalk.	
-		\section{Naviterier}
-			The navigation is very precise and appreciatet by the blinds. However they don't know it's just pre-downloaded set of orders. That it does not update base on the real location.
-			
-			I definitely recomend either make sure the user knows the navigation started to work offline or add the updating based on realtime GPS signal. In the tested systems when the system used GPS to locate the initial position, and then turned off the signal without noticing the user, it made the users make huge mistakes, guiding them the wrong path, while still tehy were sure, they are walking the right way and the system as well knows tehir exact location.
 		
+		\section{Other parts of the solution}	
+			\subsection{Reverse geolocation API}
+				\label{subsec:reverse-gc-api}
+				Don't use the Google API or HERE API. Because Naviterier requires Street name and house number as na input i.e. \uv{Vodičkova 13}. But both of them sometimes, instead of the address  returns just the street name i.e. \uv{Vodičkova}, or just the area name ie \uv{Nové Město, Praha}. Therefore you need an API which allways returns Street and housenumber. CEDA API seems promising. Still better method would be an API which for GPS coordinates returns the sidewalk Id and don't rely, that the nearest address entery point is on the same sidewalk.	
+			\subsection{Naviterier}
+				The navigation is very precise and appreciated by the blinds. However they don't know it's just pre-downloaded set of orders. That it does not update base on the real location.
+				
+				I definitely recommend either make sure the user knows the navigation started to work off-line or add the updating based on real-time GPS signal. In the tested systems when the system used GPS to locate the initial position, and then turned off the signal without noticing the user, it made the users make huge mistakes, guiding them the wrong path, while still they were sure, they are walking the right way and the system as well knows their exact location.
+			
 	
 	\chapter{Appendix}
 		\section{POI bugs}
