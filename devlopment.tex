@@ -1,0 +1,85 @@
+	\chapter{Development}
+		\section{Describe the surroundings}
+			For start I wanted to try localize the pedestrian just by, analysis of what's arround him and unprecise GPS position. I used 50m GPS radius and info i.e. I am going downhill, grass area on the right hand and noisy street on the left hand. The question was is it sufficient info? And the next question was can such solution be implemented?
+			\subsection{1st iteration}
+				To get all necessary info from the user, I had to invent an dialog system a and dialog logic. To get inspiration my supervisor advised me to prepare an experiment.
+				
+				An experiment - two player game, to be precise. One player was simulating a \emph{blind} user, the second player was simulating the \emph{dialog system}. Every player was sitting on a separate table and there was an divider between them.
+				
+				%image two players
+				\begin{figure}[th]
+					\centering
+					\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/dva-hraci23062017}
+					\caption{Two player game}
+					\label{fig:two-players}
+				\end{figure}
+			
+				
+				\paragraph{blind user}
+					This player was given a map and a marker - a piece of paper with cutout hole representing the blind person. He was then using this  marker to move on the map and see only very close surroundings. See pic \ref{label}.
+					
+					The map was depicting all the environment: inclination of sidewalks, pedestrian crossings,
+					marking for blinds, rails, houses, parked cars, noises form cars, ticking noises from traffic	lights, direction of cars and tram lines.
+					
+					The user choosed a place on a side walk he liked and put a cut out hole on that spot.
+					Then he was moving and exploring the environment based
+					on \emph{dialog system}'s orders and responding his questions.
+				\paragraph{dialog system}
+					This player had another copy of the map. He was asking the \emph{blind user} the questions and giving him orders. In order to localize his position. \uv{Do you have there buildings?}, \uv{Which hands do you have the house
+					on?}, \uv{Are you going up hill?}. Depending on the response i.e \uv{I am going downhill.} He was
+					eliminating all the not suitable places (uphills, and horizontal sidewalks). When the possible
+					space on the sidewalks narrowed to one point the seeker anouced \uv{Found you, you are here!}
+					and showed it to the \emph{blind user}.	
+				
+				\begin{figure}[th]
+					\centering
+					\includegraphics[width=0.7\linewidth]{"../../../../Dropbox/dp/developement/surroundings/map and blind simulator"}
+					\caption{Map and blind user simulator}
+					\label{fig:map-and-blind-simulator}
+				\end{figure}
+				
+				We went with every player over 4 maps with increasing complexity. 
+				I was allways playing the \emph{dialog system} player.
+				
+				I recorded the audio from every game session to an audiofile. I transcribed the audiofiles and then extracted all the questions and orders of the \emph{dialog system} player.
+				
+				Next I divided the questions to clusters according to the topic. And then selected the question, which seemed most suitable or most appropriate to me. And then put down a list of these selected questions.
+			
+				\begin{figure}[th]
+					\centering
+					\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/selected-questions-example}
+					\caption{Examle of 2 selected questions from WHERE cluster}
+					\label{fig:clusteredquestions}
+				\end{figure}
+			
+				\paragraph{testing details}
+				Five friends interacted as users in this study. 3 mens and 2 womens. They were between 21 and 53 years old. Each participant went over 4 maps.
+			
+			\subsection{2nd iteration}
+				From the questions
+				%continue here
+				
+				\paragraph{testing details}
+				Five friends interacted as users in this study. 3 mens and 2 womens. They were between 21 and 53 years old. Each participant went over 4 maps.
+			\subsection{3rd iteration}		
+			\subsection{Canceled}
+		\section{POI}		
+			\subsection{1st iteration}
+			\subsection{2nd iteration}		
+		\section{POI with the hints}
+			\subsection{1st iteration}
+			\subsection{Canceled}	
+		\section{Go around a corner with compass}
+			\subsection{1st iteration}
+			\subsection{2nd iteration}
+		\section{Go around a corner}
+			\subsection{1st iteration}
+			\subsection{Canceled}
+		\section{Go to a corner of two streets}
+			\subsection{1st iteration}
+			\subsection{Canceled}
+		\section{Reverse Geocoding}
+			\subsection{1st iteration}
+			\subsection{Canceled}
+		
+		

@@ -1,0 +1,89 @@
+\chapter{Proposed Methods}
+		This section describes all methods I found out. The description talks allways about the latest iteration of the prototype.
+		\section{Overview}
+		The iterative design process lead me to propose and validate 7 different methods. These methods are split into categories without GPS and without. The first group, without GPS promises working even on old phones as Nokias with Symbian S60, which are still used by some blind. The second group with GPS uses the advatages of modern phones as iPhones and even recent cheap Androids, with the basic smart sensors.
+		
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.8\linewidth]{../../../../Dropbox/dp/overview/prototypes_testings}
+			\caption{Overview of which prototype survived to which testing}
+			\label{fig:prototypestestings}
+		\end{figure}
+		
+		\section{List of all prototypes}
+		\paragraph{Without GPS}
+		\begin{description}
+			\item [POI]
+			The systems asks questions about the current address or current start stop name to decide the users exact position.
+			\item [Go to corner of two streets]
+			The system asks user to go to a crossing of two streets and asks pedestrians walking arround to get the name of the streets. 
+		\end{description}
+		\paragraph{With GPS}
+		\begin{description}
+			\item [Describe surroundings]
+			User describes, what's arround him i.e. \uv{road on the left, grass area on left} and the system looks on the map in user's area and asks follow up questions until, the descriptions match exactly one position on exactly one sidewalk.								
+			\item [POI with hints]
+			Similiar as the POI without GPS. But when asking about the address or tramstop, it tells the user the streets and stop's names which are nearby based on GPS signal.
+			\item [Go arround corner]
+			Uses GPS position of target and compass in the phone, to tell user what direction he should start. Then leads the user arround corner while collecting the GPS positions. And then finaly estimate the user's sidewalk by matching of collected GPS coordinates sidewalks in the map.
+			\item [Go arround corner without compass]
+			Same as the previous, but on the beginning to decide for himself, what direction he wants to start.
+			\item [Reverse geocoding]
+			Uses GPS position to get coordinates, gets current address from them and then launch navigation between the current address and the target address.
+		\end{description}
+		
+		
+		
+		\section{Without GPS}
+		\section{GPS}
+		\subsection{Go arround corner with compass}
+		\begin{figure}[!htb]
+			\minipage{0.32\textwidth}
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/01}
+			\caption{A really Awesome Image}\label{fig:awesome_image1}
+			\endminipage\hfill
+			\minipage{0.32\textwidth}
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/02}
+			\caption{A really Awesome Image}\label{fig:awesome_image2}
+			\endminipage\hfill
+			\minipage{0.32\textwidth}%
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/03}
+			\caption{A really Awesome Image}\label{fig:awesome_image3}
+			\endminipage
+		\end{figure}
+		
+		This prototype uses the compass to send the user the correct way, then it collects GPS coordinates on the way
+		This is a high fidelity prototype.
+		\subsection{Reverse geocoding}
+		
+		\begin{figure}[!htb]
+			\minipage{0.32\textwidth}
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/01}
+			\caption{A really Awesome Image}\label{fig:awesome_image1}
+			\endminipage\hfill
+			\minipage{0.32\textwidth}
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/02}
+			\caption{A really Awesome Image}\label{fig:awesome_image2}
+			\endminipage\hfill
+			\minipage{0.32\textwidth}%
+			\includegraphics[width=\linewidth]{../../../../Dropbox/dp/proposed-methods/reverse-gc/03}
+			\caption{A really Awesome Image}\label{fig:awesome_image3}
+			\endminipage
+		\end{figure}
+		
+		Reverse geocding method uses GPS sensor only one time to get actual GPS coordinates. 
+		The system asks the user for the target adress. Meanwhile it launches the GPS sensor.
+		The user is typing the desired target address on default system keyboard or in Chrome browser, he can use the advantage of button \uv{Dictate} and speak it aloud.
+		When the user is done with input, the system shows current estimated accuracy of the system.
+		Then user can click on \uv{Navigate to Vodičkova 13}. The value of this button changes according to the inputed target address.
+		Once the user click navigate, the systems validate the target address and the user location are both in area covered by Naviterier and if so the system shows the user the navigation. Which then navigate the user to the target. See section \ref{sec:navifation} for more details.
+		
+		Note: The estimated accuracy is changed only when the sensor tells a value which is $\geq 5m$. This prevents the screen reader from infinite reeding loop, when it would be changing between i.e. $10m$ and $11m$. 
+		\section{Navigation}
+		\label{sec:navifation}
+		This describe the navigation itself. It means this decribe the window which is opened when the system estimates the exact user address.
+
+		
+		
+				
+	
