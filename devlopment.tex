@@ -1,7 +1,23 @@
 	\chapter{Development}
+		The design process and validating through user testing made me to develop and test 7 methods. These methods are:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Describe the surroundings
+				\item POI
+				\item POI with the hints
+				\item Go around a corner with compass
+				\item Go around a corner
+				\item Go to a corner of two streets
+				\item Reverse Geocoding
+			\end{itemize}	
+		\end{multicols}
+		
+		 
+	
 		\section{Describe the surroundings}
-			For start I wanted to try localize the pedestrian just by, analysis of what's arround him and unprecise GPS position. I used 50m GPS radius and info i.e. I am going downhill, grass area on the right hand and noisy street on the left hand. The question was is it sufficient info? And the next question was can such solution be implemented?
+			For start I wanted to try localize the pedestrian just by, analysis of what's arround him and unprecise GPS position. I used GPS radius of 50m  and info as i.e. \uv{I am going downhill, grass area on the right hand and noisy street on the left hand.} The question was is it sufficient info? And the next question was can such solution be implemented?
 			\subsection{1st iteration}
+				\label{sec:surroundings-frist-iter}
 				To get all necessary info from the user, I had to invent an dialog system a and dialog logic. To get inspiration my supervisor advised me to prepare an experiment.
 				
 				An experiment - two player game, to be precise. One player was simulating a \emph{blind user}, the second player was simulating the \emph{dialog system}. Every player was sitting on a separate table and there was an divider between them.
@@ -16,7 +32,7 @@
 			
 				
 				\paragraph{blind user}
-					This player was given a map and a marker - a piece of paper with cutout hole representing the blind person. He was then using this  marker to move on the map and see only very close surroundings. See pic \ref{fig:map-and-blind-simulator}.
+					This player was given a map and a marker. The marker was a piece of paper with cutout hole representing the blind person. He was then using this  marker to move on the map and see only very close surroundings. See pic \ref{fig:map-and-blind-simulator}.
 					
 					The map was depicting all the environment: inclination of sidewalks, pedestrian crossings,
 					marking for blinds, rails, houses, parked cars, noises form cars, ticking noises from traffic	lights, direction of cars and tram lines.
@@ -34,7 +50,7 @@
 				\begin{figure}[th]
 					\centering
 					\includegraphics[width=0.7\linewidth]{"../../../../Dropbox/dp/developement/surroundings/map and blind simulator-01"}
-					\caption{Map and blind user simulator}
+					\caption{Map and marker}
 					\label{fig:map-and-blind-simulator}
 				\end{figure}
 				
@@ -58,54 +74,160 @@
 			\subsection{2nd iteration}
 				In this iteration I created a flow diagram in Axure\cite{axure}. 
 				
-
+				\begin{figure}[ht]
+					\centering
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/tested-dialogue}
+					\caption[]{dialogue}
+					\label{fig:tested-dialogue}
+				\end{figure}
 			
+				%\begin{figure*}[ht]
+				%	\centering
+				%	\begin{subfigure}[t]{0.5\textwidth}
+				%		\centering
+				%		\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/tested-dialogue}
+				%		\caption[]{dialogue}
+				%		\label{fig:tested-dialogue}
+				%	\end{subfigure}%
+				%	~ 
+				%	\begin{subfigure}[t]{0.5\textwidth}
+				%		\centering
+				%		\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/detail}
+				%		\caption[]{dialog detail}
+				%		\label{fig:dialog-detail}
+				%	\end{subfigure}
+				%	\caption{Dialog and detail from dialogue}
+				%\end{figure*}
+		
+				We played the same game as in Iteration 1 (see \ref{sec:surroundings-frist-iter}). With small differences:
+				
+				%\paragraph{blind user}
+				%	Same as in 1st iteration.
+				\paragraph{dialog system}
+					This player was no longer talking. But he was still listening and deciding the logic. When he wanted to tell something to the \emph{blind user}, he instead only clicked on the appropriate button with pre-spoken messages. When the user replied, this player analyzed for keywords, and based on keyword he decided what button he should click on.
+					
+				
+				The audio was done using Accapela-box text to speach service\cite{accapela}. I entered every possible text, downloaded it as TTS mp3 and linked it to correct button in Axure's flow diagram.
+				
+				We went over the same 4 maps with increasing complexity. I was playing the \emph{dialog system} player. But this time the maps were graphicaly improved to be easier for \emph{blind user} player.
+				
+				I did usability analysis of the sessions and discovered 27 usability issues. The major one was \emph{blind player} had no idea what does it mean \uv{Continue further in jour journey.}. The instruction is \uv{continue further until you find something interesting}. He is going through the street and reaches a corner, report it to the system and the system answers \uv{Ok, you are at a corner. Now continue further}. Because it can have different meanings in the following situation. Should the user turn on the corner or cross the street?
+						
+		
+				%img of the corner	
+				\begin{figure}[th]
+					\centering
+					\includegraphics[width=0.3\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/CCI05042016}
+					\caption{What does it mean \uv{Continue..}}
+					\label{fig:what-does-continue-mean}
+				\end{figure}
+			
+				
+					
+					And the next problem was the \emph{blind users} were not sure how to name some types of corners. There are many types of corners, I was not sure how the blind would recognize them.
+					
+				%3 images of different corner types	
 				\begin{figure*}[ht]
 					\centering
-					\begin{subfigure}[t]{0.5\textwidth}
+					\begin{subfigure}[t]{0.32\textwidth}
 						\centering
-						\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/tested-dialogue}
-						\caption[]{dialogue}
-						\label{fig:tested-dialogue}
+						\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/ostry-s-dirou}
+						\caption[]{Sharp with a space inside}
+						\label{fig:ostry-s-dirou}
 					\end{subfigure}%
 					~ 
-					\begin{subfigure}[t]{0.5\textwidth}
+					\begin{subfigure}[t]{0.32\textwidth}
 						\centering
-						\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/detail}
-						\caption[]{dialog detail}
-						\label{fig:dialog-detail}
+						\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/kulaty}
+						%\caption[]{dialog detail}
+						\label{fig:kulaty}
 					\end{subfigure}
-					\caption{Dialog and detail from dialogue}
+					~ 
+					\begin{subfigure}[t]{0.32\textwidth}
+						\centering
+						\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/surroundings/2nditeration/zkoseny}
+						\caption[]{dialog detail}
+						\label{fig:lomeny}
+					\end{subfigure}
+					\caption{Example of different corners of buildings in Prague}
 				\end{figure*}
-		
-		
-		
-
-
+					
 	
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				%continue here
-				
+			
 				
 				
 				\paragraph{testing details}
 					Five friends interacted as users in this study. 3 women and 2 men. They were 22 - 27 years old. Each participant went over 4 maps.
-			\subsection{3rd iteration}
+			\subsection{additional research}
+				This research was focused to verify the ideas from dialog sytem in 2nd iteration and to get insights how to solve "continue.." issue. I In order to do that, I designed the research to answer the following questions:
+					\begin{itemize}
+						\item how do they call the different type of corrners
+						\item how do they work with archway
+						\item how do they distinguish between tactile guide linie and tactile marking at pedestrian crossing
+						\item how do they recognize between regular and dropped curb
+						\item how do they work with grass area
+						\item how do they work with railings
+						\item what they can say about tramlines
+						\item how do they describe tilt of sidewalks
+					\end{itemize}
+				
+				The research showed:
+					They will often not report the corner as the correct type. Because they don't touch the corners just try to walk close to the wall. And then report the shape of the corner based on how they walked and how they felt the wall was close to them during the whole maneuver.
+					They don't register global changes, only local i.e. long slow inclination will go unnoticed. Corner less than $45\deg$ can be unnoticed as well.
+					They register only local significant changes.
+					They can not notice the tactile marking at pedestrian crossing.
+					They use the grass as signal linie and call it just "grass".
+					Trams are very good indicie. They go on Charles Square frequently.
+					The streets are very noisy. Sometimes you don't hear the other person speaking. Not always suitable for dictating.
+					
+					
+					%corners and how they walk arround
+					\begin{figure}[th]
+						\centering
+						\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/surroundings/corners-research}
+						\caption{Four types of corners and the red line demonstrates, how blind people walk around the corner. There is a similarity in path around $90\deg$ and small rounded corner. and another similarity is with walking around the large rounded corner and large bevel corner.}
+						\label{fig:corners-research}
+					\end{figure}
+				
 				\paragraph{testing details}
-					Three friends interacted as users in this study. 2 women and 1 men. They were 22 - 26 years old. Each participant went over 3 places in the city.		
+					Three blind people interacted as users in this study. 3 men. They were 21 - 64 years old. Each of the three participant walked through the same commented path.
+			\subsection{3rd iteration}
+				In this iteration I fixed the flaws from second iteration and used the visdom from the additional research.
+				I fixed:
+					asking about how long he walked from the last reported point
+					asking how he went (crossing street, go left arround corner, gor right)
+					reducing the types of corners to round, sharp and $45\deg$ and reading the list of choices, in case the user called the corner differently
+					and changing some wording.
+									
+				
+				\begin{figure}[th]
+					\centering
+					\includegraphics[width=0.7\linewidth]{"../../../../Dropbox/dp/developement/surroundings/3rd iteration/dialog - testovany prototyp"}
+					\caption{}
+					\label{fig:dialog---testovany-prototyp}
+				\end{figure}
+			
+				I tested with three users in the areas close to Charles' square. But the testing was successfull only in 5 cases out of total 12 tries. It failed mostly, because the user described the surroundings differently then the system was prepared to process and response. i.e. S:\uv{What kind of corner?} U:\uv{I am on a crossing}. Or the system discovered the user is somewhere on a corner of a long segment of sidewalk, but was not able to determine which corner was it.
+				
+				Before evaluating this testing session  more deeply, tried to discover what info exactly is in the Naviterier system, and had to cancel this method. See following section \emph{Canceled}. therefore it didn't made sense to spent more time on analysing this testing session.
+				
+				\paragraph{testing details}
+					Three friends interacted as users in this study. 2 women and 1 men. They were 22 - 26 years old. Each participant went over 4 places in the city.		
 			\subsection{Canceled}
+				Here comed the hacking and reverse engineering. Because the Naviterier API \cite{naviterier-api} don't return info about the types of corners. I used the Naviterier's route description API \cite{naviterier-route-description} to find the stored type of corners. I allways pick one address of a house in front of the corner and one address of a house just behind the corner and let the API to generate the description. In the description was then mentioned the type of the corner, so I was able to discover, what kind of info the future version of the Naviterier's API\cite{naviterier-api} can provide.
+				
+				I discovered the method \emph{describe surroundings} suffers from two major troubles. The first the system can't rely the user will describe the environment as it's  described in the map. The second the records in the map are sometimes not corresponding fully with reality.
+				
+				The first, hits into classic contrast between recognition and recall. i.e. in the map is the description the sidewalk is going slowly uphill. then the blind people will pay attention and confirm the system is right. On the other hand in this prototype, we ask users to describe the inclination of the sidewalk. And the research discovered, blind people sometimes don't notice if the inclination of the sidewalk is very slow. I would see it as the sighted person, because i see more of the area and analyse visualy a long piece of the street. In contrast to that the blinds only analyse a short part of the sidewalk and can report mild inclination as flat - no inclination. 
+				
+				To corners, the blind people don't touch corners. If you say them, you are on a round corner, they just think \uv{yeah, can be.}
+				
+				For the second, again recognition vs. recall. In Naviterier map database\cite{naviterier-map-details} is stored informations, which are sufficient for task: \emph{System describes the surroundings to user, and user will agree he is right}, but this info is not sufficient for reverse direction task \emph{User describes the surroundings, and the system says you are exactly here.} i.e. the corner on picture \ref{fig:ostry-s-dirou} is in the Naviterier's DB stored as \emph{bevel corner}. While the user's in the research described it as \emph{right angle}, \emph{right angle with a space inside} or just as an \emph{entrace to the building}.
+				
+				Or the corner on the picture \ref{fig:lomeny} was dascribed as \emph{two times $45\deg$} or as \emph{rounded corner}, while the Navitrier's DB is \emph{street is bending to the left}.
+				
+				Because of these two major issues, I decided to drop this approach and design another methods.
+				
 		\section{POI}		
 			\subsection{1st iteration}
 			\subsection{2nd iteration}		
