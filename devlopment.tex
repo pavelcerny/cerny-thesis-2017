@@ -72,6 +72,7 @@
 					Five friends interacted as users in this study. 2 women and 3 men. They were 21 - 53 years old. Each participant went over 4 maps.
 			
 			\subsection{2nd iteration}
+				\label{sec:decsribe-surroundings-2nd-iter}
 				In this iteration I created a flow diagram in Axure\cite{axure}. 
 				
 				\begin{figure}[ht]
@@ -228,7 +229,9 @@
 				
 				Because of these two major issues, I decided to drop this approach and design another methods.
 				
-		\section{POI}		
+		\section{POI}
+			For this method I got inspired by a discussion with one blind, while walking through the city. He was working on 
+				
 			\subsection{1st iteration}
 			\subsection{2nd iteration}		
 		\section{POI with the hints}
@@ -241,7 +244,72 @@
 			\subsection{1st iteration}
 			\subsection{Canceled}
 		\section{Go to a corner of two streets}
+			This method was inspired, when I noticed, the blind know quite well the streets they use i.e. on the way from metro station to their job's house.
+			So the idea was, when they are standing on a crossing of two streets they are able to say, the name of both streets.
+			
+			The trick is, when you know the the names of the 2 crossing streets, and the direction, where the person will go if he goes around the corner. you can decide the corner. So you can design a mapping: $(fromStreetName, toStreetName, leftOrRight) \rightarrow corner$
+			
+			%2 images of from lazarska to vladislavova and vice versa	
+			\begin{figure*}[ht]
+				\centering
+				\begin{subfigure}[t]{0.45\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/from}
+					\caption[]{From Vladislavova to Lazarska, going Right (resp. Left)}
+					\label{fig:x}
+				\end{subfigure}%
+				~ 
+				\begin{subfigure}[t]{0.45\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/to}
+					\caption[]{From Lazarska to Vladislavova, going Right (resp. Left)}
+					\label{fig:2-x-unique}
+				\end{subfigure}
+				
+				\caption{On a T crossing, we can easily decide, where is the person standing, based on \emph{fromStreetName}, \emph{toStreetName} and \emph{directionOfThePath}}
+			\end{figure*}
+		
+		This hold perfectly for T crossings. For the X-crossings:
+		%2 images of from lazarska to vladislavova and vice versa	
+		\begin{figure*}[ht]
+			\centering
+			\begin{subfigure}[t]{0.45\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/X}
+				\caption[]{On X crossing 2 descriptions will be the same...}
+				\label{fig:from}
+			\end{subfigure}%
+			~ 
+			\begin{subfigure}[t]{0.45\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/2-X-unique}
+				\caption[]{...however if we ask for one more street, then 2 crossings are always unique}
+				\label{fig:to}
+			\end{subfigure}
+			
+			\caption{}
+		\end{figure*}
+		
+		
 			\subsection{1st iteration}
+				For the first iteration i designed the HTA:
+					\begin{figure}[th]
+						\centering
+						\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/HTA}
+						\caption{}
+						\label{fig:hta}
+					\end{figure}
+				And based on the HTA I designed the dialog system. It was a low fidelity prototype, so again similiary as in 2nd iteration of the method \emph{Describe surroundings} (see \ref{sec:decsribe-surroundings-2nd-iter}) I just drawn the Axure\cite{axure} diagram, and prerecorded the sound in Accapela-box\cite{accapela} TTS.
+				
+					\begin{figure}[th]
+						\centering
+						\includegraphics[width=0.7\linewidth]{../../../../Dropbox/dp/developement/crossing-of-2-streets/prototyp}
+						\caption{}
+						\label{fig:prototyp-crossing-of-two}
+					\end{figure}
+				
+				For the experiment, the people was allways going to Karlovo namesti 13 so I could prefill the some user responses. But sometimes I just resayed in \uv{mechanical voice}, what the user tried to enter.
+				
 			\subsection{Canceled}
 		\section{Reverse Geocoding}
 			\subsection{1st iteration}
